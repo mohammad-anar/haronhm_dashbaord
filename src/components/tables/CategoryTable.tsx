@@ -11,77 +11,67 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import { IconPencil, IconPlus } from "@tabler/icons-react";
+import { IconPencil, IconPlus, IconTrash } from "@tabler/icons-react";
 
-interface Product {
+interface Category {
   id: string;
   image: string;
-  name: string;
-  category: string;
-  price: number;
-  availability: "Stock" | "Out Of Stock";
+  categoryName: string;
+  status: "Active" | "Inactive";
 }
 
 interface ProductsTableProps {
-  products?: Product[];
-  handleAddProduct: () => void;
-  handleEditProduct: (id: string) => void;
+  categories?: Category[];
+  handleAddCategory: () => void;
+  handleEditCategory: (id: string) => void;
+  handleDeleteCategory: (id: string) => void;
 }
 
-const tableHeaders = [
-  "Image",
-  "Name",
-  "Category",
-  "Price",
-  "Availability",
-  "Action",
-];
+const tableHeaders = ["Image", "Category Name", "status", "Action"];
 
-const defaultProducts: Product[] = [
+const defaultCategories: Category[] = [
   {
     id: "1",
     image: "🐄",
-    name: "Cow",
-    category: "Cow",
-    price: 1250,
-    availability: "Stock",
+    categoryName: "Cow",
+    status: "Active",
   },
   {
     id: "2",
     image: "🐪",
-    name: "Camel",
-    category: "Camel",
-    price: 850,
-    availability: "Out Of Stock",
+    categoryName: "Camel",
+    status: "Active",
   },
   {
     id: "3",
     image: "🐑",
-    name: "Sheep",
-    category: "Sheep",
-    price: 850,
-    availability: "Stock",
+    categoryName: "Sheep",
+    status: "Active",
   },
 ];
 
-export function ProductsTable({
-  products = defaultProducts,
-  handleAddProduct,
-  handleEditProduct,
+export function CategoryTable({
+  categories = defaultCategories,
+  handleAddCategory,
+  handleEditCategory,
+  handleDeleteCategory,
 }: ProductsTableProps) {
   const handleClick = () => {
-    handleAddProduct();
+    handleAddCategory();
   };
   const handleEditClick = (id: string) => {
-    handleEditProduct(id);
+    handleEditCategory(id);
+  };
+  const handleDeleteClick = (id: string) => {
+    handleDeleteCategory(id);
   };
   return (
     <div className="space-y-6 bg-secondary p-5 rounded-xl">
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg lg:text-xl font-semibold ">Recent Products</h2>
+          <h2 className="text-lg lg:text-xl font-semibold ">Recent Category</h2>
           <Button onClick={handleClick} className="bg-my-primary">
-            <IconPlus /> Add Product
+            <IconPlus /> Add Category
           </Button>
         </div>
         <div className="border border-gray-300 rounded-lg overflow-hidden bg-white">
@@ -99,49 +89,48 @@ export function ProductsTable({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {products.map((product) => (
+              {categories.map((categories) => (
                 <TableRow
-                  key={product.id}
+                  key={categories.id}
                   className="border-b border-gray-300 hover:bg-gray-50 last:border-b-0"
                 >
                   <TableCell className="py-3 px-4">
                     <div className="w-12 h-12 bg-gray-200 rounded-md flex items-center justify-center text-xl">
-                      {product.image}
+                      {categories.image}
                     </div>
                   </TableCell>
                   <TableCell className="py-3 px-4 text-gray-700">
-                    {product.name}
-                  </TableCell>
-                  <TableCell className="py-3 px-4 text-gray-700">
-                    {product.category}
-                  </TableCell>
-                  <TableCell className="py-3 px-4 text-orange-500 font-medium">
-                    ${product.price}
+                    {categories.categoryName}
                   </TableCell>
                   <TableCell className="py-3 px-4">
                     <Badge
                       variant={
-                        product.availability === "Stock"
-                          ? "outline"
-                          : "secondary"
+                        categories.status === "Active" ? "outline" : "secondary"
                       }
                       className={
-                        product.availability === "Stock"
+                        categories.status === "Active"
                           ? "bg-green-50 text-green-700 border-green-200"
                           : "bg-orange-50 text-orange-700 border-orange-200"
                       }
                     >
-                      {product.availability}
+                      {categories.status}
                     </Badge>
                   </TableCell>
                   <TableCell className="py-3 px-4">
-                    <Button
-                      onClick={() => handleEditClick(product.id)}
-                      className=" bg-my-primary"
-                    >
-                      <IconPencil />
-                      Edit
-                    </Button>
+                    <div className="flex items-center gap-3">
+                      <Button
+                        onClick={() => handleEditClick(categories.id)}
+                        className=" bg-my-primary"
+                      >
+                        <IconPencil />
+                      </Button>
+                      <Button
+                        onClick={() => handleDeleteClick(categories.id)}
+                        className=" bg-my-primary"
+                      >
+                        <IconTrash />
+                      </Button>
+                    </div>
                     {/* <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <button className="text-gray-400 hover:text-gray-600 p-1">
