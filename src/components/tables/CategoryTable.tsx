@@ -72,7 +72,7 @@ export function CategoryTable({
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg lg:text-xl font-semibold ">
             <Input
-              className="border-border border-2 lg:min-w-md"
+              className="border-border border-2 bg-white lg:min-w-md"
               placeholder="Search category..."
             />
           </h2>
@@ -132,7 +132,7 @@ export function CategoryTable({
                       </Button>
                       <Button
                         onClick={() => handleDeleteClick(categories.id)}
-                        className=" bg-my-primary"
+                        className=" bg-my-red"
                       >
                         <IconTrash />
                       </Button>
