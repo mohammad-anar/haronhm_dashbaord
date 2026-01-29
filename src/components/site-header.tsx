@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { NavUser } from "./nav-user";
+import { IconBell } from "@tabler/icons-react";
 
 export function SiteHeader() {
   const data = {
@@ -19,8 +20,13 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         /> */}
-        <h1 className="text-base font-medium">Documents</h1>
         <div className="ml-auto flex items-center gap-2">
+          <div className={"relative"}>
+            <div className="w-5 h-5 rounded-full bg-red-500 absolute -right-4 mr-4 flex items-center justify-center">
+              <span className="text-[10px] text-white">5</span>
+            </div>
+            <IconBell size={35} className="h-full" />
+          </div>
           <NavUser user={data?.user} />
         </div>
       </div>
