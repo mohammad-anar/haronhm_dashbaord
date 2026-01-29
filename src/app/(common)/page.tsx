@@ -1,10 +1,13 @@
-import { ChartAreaInteractive } from "@/components/chart-area-interactive";
-import { DataTable } from "@/components/data-table";
+"use client";
+
 import { SectionCards } from "@/components/section-cards";
 
-import data from "./data.json";
+import { ProductsPagination } from "@/components/shared/Pagination/MyPatination";
+import { ProductsTable } from "@/components/tables/productTable";
+import { useState } from "react";
 
-const page = () => {
+const Mainpage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
   return (
     <>
       <div className="flex flex-1 flex-col">
@@ -17,10 +20,14 @@ const page = () => {
               <p>Welcome back, Admin</p>
             </div>
             <SectionCards />
-            {/* <div className="px-4 lg:px-6">
-              <ChartAreaInteractive />
+            <div className="max-w-full w-full p-5 mx-auto">
+              <ProductsTable />
+              <ProductsPagination
+                currentPage={currentPage}
+                totalPages={3}
+                onPageChange={setCurrentPage}
+              />
             </div>
-            <DataTable data={data} /> */}
           </div>
         </div>
       </div>
@@ -28,4 +35,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Mainpage;
