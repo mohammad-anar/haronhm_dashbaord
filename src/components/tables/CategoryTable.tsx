@@ -12,6 +12,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { IconPencil, IconPlus, IconTrash } from "@tabler/icons-react";
+import { Input } from "../ui/input";
 
 interface Category {
   id: string;
@@ -69,7 +70,12 @@ export function CategoryTable({
     <div className="space-y-6 bg-secondary p-5 rounded-xl">
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg lg:text-xl font-semibold ">Recent Category</h2>
+          <h2 className="text-lg lg:text-xl font-semibold ">
+            <Input
+              className="border-border border-2 lg:min-w-md"
+              placeholder="Search category..."
+            />
+          </h2>
           <Button onClick={handleClick} className="bg-my-primary">
             <IconPlus /> Add Category
           </Button>
