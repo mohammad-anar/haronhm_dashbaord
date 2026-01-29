@@ -34,6 +34,8 @@ interface Product {
 
 interface ProductsTableProps {
   products?: Product[];
+  handleAddProduct: () => void;
+  handleEditProduct: (id: string) => void;
 }
 
 const tableHeaders = [
@@ -74,13 +76,21 @@ const defaultProducts: Product[] = [
 
 export function ProductsTable({
   products = defaultProducts,
+  handleAddProduct,
+  handleEditProduct,
 }: ProductsTableProps) {
+  const handleClick = () => {
+    handleAddProduct();
+  };
+  const handleEditClick = (id: string) => {
+    handleEditProduct(id);
+  };
   return (
     <div className="space-y-6 bg-secondary p-5 rounded-xl">
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg lg:text-xl font-semibold ">Recent Products</h2>
-          <Button className="bg-my-primary">
+          <Button onClick={handleClick} className="bg-my-primary">
             <IconPlus /> Add Product
           </Button>
         </div>
@@ -135,7 +145,14 @@ export function ProductsTable({
                     </Badge>
                   </TableCell>
                   <TableCell className="py-3 px-4">
-                    <DropdownMenu>
+                    <Button
+                      onClick={() => handleEditClick(product.id)}
+                      className=" bg-my-primary"
+                    >
+                      <IconPencil />
+                      Edit
+                    </Button>
+                    {/* <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <button className="text-gray-400 hover:text-gray-600 p-1">
                           <MoreVertical className="w-5 h-5" />
@@ -145,12 +162,9 @@ export function ProductsTable({
                         align="center"
                         className="bg-transparent border-0 shadow-none flex items-center justify-centers"
                       >
-                        <Button className=" bg-my-primary">
-                          <IconPencil />
-                          Edit
-                        </Button>
+                        
                       </DropdownMenuContent>
-                    </DropdownMenu>
+                    </DropdownMenu> */}
                   </TableCell>
                 </TableRow>
               ))}
