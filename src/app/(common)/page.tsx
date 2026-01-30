@@ -50,6 +50,10 @@ const Mainpage = () => {
     console.log(id);
     setIsEditModalOpen(true);
   };
+  const handleDeleteProduct = (id: string) => {
+    console.log(id);
+    setIsEditModalOpen(true);
+  };
 
   return (
     <>
@@ -67,6 +71,8 @@ const Mainpage = () => {
               <ProductsTable
                 handleAddProduct={handleAddProduct}
                 handleEditProduct={handleEditProduct}
+                handleDeleteProduct={handleDeleteProduct}
+                isRecent={true}
               />
               <ProductsPagination
                 currentPage={currentPage}

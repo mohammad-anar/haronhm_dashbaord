@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import { IconPencil, IconPlus } from "@tabler/icons-react";
+import { IconPencil, IconPlus, IconTrash } from "@tabler/icons-react";
+import { Input } from "../ui/input";
 
 interface Product {
   id: string;
@@ -26,6 +27,8 @@ interface ProductsTableProps {
   products?: Product[];
   handleAddProduct: () => void;
   handleEditProduct: (id: string) => void;
+  handleDeleteProduct: (id: string) => void;
+  isRecent?: boolean;
 }
 
 const tableHeaders = [
@@ -68,6 +71,8 @@ export function ProductsTable({
   products = defaultProducts,
   handleAddProduct,
   handleEditProduct,
+  handleDeleteProduct,
+  isRecent = false,
 }: ProductsTableProps) {
   const handleClick = () => {
     handleAddProduct();
@@ -75,11 +80,26 @@ export function ProductsTable({
   const handleEditClick = (id: string) => {
     handleEditProduct(id);
   };
+  const handleDeleteClick = (id: string) => {
+    handleDeleteProduct(id);
+  };
   return (
     <div className="space-y-6 bg-secondary p-5 rounded-xl">
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg lg:text-xl font-semibold ">Recent Products</h2>
+          {isRecent && (
+            <h2 className="text-lg lg:text-xl font-semibold ">
+              Recent Products
+            </h2>
+          )}
+          {isRecent || (
+            <div className="text-lg lg:text-xl font-semibold ">
+              <Input
+                className="border-border border-2 bg-white lg:min-w-md"
+                placeholder="Search animals..."
+              />
+            </div>
+          )}
           <Button onClick={handleClick} className="bg-my-primary">
             <IconPlus /> Add Product
           </Button>
@@ -135,13 +155,20 @@ export function ProductsTable({
                     </Badge>
                   </TableCell>
                   <TableCell className="py-3 px-4">
-                    <Button
-                      onClick={() => handleEditClick(product.id)}
-                      className=" bg-my-primary"
-                    >
-                      <IconPencil />
-                      Edit
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        onClick={() => handleEditClick(product.id)}
+                        className=" bg-my-primary"
+                      >
+                        <IconPencil />
+                      </Button>
+                      <Button
+                        onClick={() => handleDeleteClick(product.id)}
+                        className=" bg-my-red"
+                      >
+                        <IconTrash />
+                      </Button>
+                    </div>
                     {/* <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <button className="text-gray-400 hover:text-gray-600 p-1">

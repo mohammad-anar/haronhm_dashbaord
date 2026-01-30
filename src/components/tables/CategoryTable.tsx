@@ -70,12 +70,12 @@ export function CategoryTable({
     <div className="space-y-6 bg-secondary p-5 rounded-xl">
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg lg:text-xl font-semibold ">
+          <div className="text-lg lg:text-xl font-semibold ">
             <Input
               className="border-border border-2 bg-white lg:min-w-md"
               placeholder="Search category..."
             />
-          </h2>
+          </div>
           <Button onClick={handleClick} className="bg-my-primary">
             <IconPlus /> Add Category
           </Button>
