@@ -57,7 +57,7 @@ export function SectionCards() {
           <CardHeader>
             <CardDescription>{item.title}</CardDescription>
             <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-              ${item.amount}
+              {item.amount}
             </CardTitle>
             <CardAction>
               <div className="w-10 h-10 bg-purple-200 flex items-center justify-center rounded-md p-2">
