@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 interface LoginForm {
   email: string;
@@ -12,6 +13,7 @@ interface LoginForm {
 }
 
 export default function LoginPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -26,6 +28,8 @@ export default function LoginPage() {
 
   const onSubmit = (data: LoginForm) => {
     console.log("Form submitted:", data);
+    localStorage.setItem("isLoggedIn", "true");
+    router.push("/");
   };
 
   return (
