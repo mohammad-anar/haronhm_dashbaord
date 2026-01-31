@@ -36,7 +36,7 @@ export function NavDocuments({
             className={cn(
               "mb-2",
               pathName === item.url
-                ? "bg-amber-400 rounded-sm text-white"
+                ? "bg-my-primary rounded-sm text-white"
                 : "text-black hover:bg-gray-200 hover:text-black rounded-sm",
             )}
             key={item.name}
