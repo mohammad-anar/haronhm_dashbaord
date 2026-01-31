@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { Eye, EyeOff, Lock } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 interface ResetPasswordForm {
   newPassword: string;

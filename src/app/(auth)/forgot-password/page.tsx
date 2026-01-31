@@ -1,9 +1,9 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
 
 interface ForgotPasswordForm {
   email: string;

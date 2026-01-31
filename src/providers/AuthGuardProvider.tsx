@@ -12,7 +12,10 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
     const isAuthPage =
-      pathname.startsWith("/login") || pathname.startsWith("/auth");
+      pathname.startsWith("/login") ||
+      pathname.startsWith("/forgot-password") ||
+      pathname.startsWith("/reset-password") ||
+      pathname.startsWith("/change-password");
 
     if (!isLoggedIn && !isAuthPage) {
       router.replace("/login");

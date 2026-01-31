@@ -6,7 +6,7 @@ import { EditCategoryForm } from "@/components/shared/forms/EditCategoryForm";
 import { MyModal } from "@/components/shared/Modal/MyModal";
 import { ProductsPagination } from "@/components/shared/Pagination/MyPatination";
 import { CategoryTable } from "@/components/tables/CategoryTable";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const CategoryPage = () => {
   const [currentPage, setCurrentPage] = useState(1);

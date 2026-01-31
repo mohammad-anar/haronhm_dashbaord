@@ -1,11 +1,11 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Eye, EyeOff, Mail, Lock } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 
 interface LoginForm {
   email: string;
@@ -129,19 +129,6 @@ export default function LoginPage() {
           Sign In
         </Button>
       </form>
-
-      {/* Sign Up Link */}
-      <div className="text-center mt-6">
-        <p className="text-gray-600 text-sm">
-          Don&apos;t have an account?{" "}
-          <Link
-            href="/signup"
-            className="text-teal-600 font-medium hover:underline"
-          >
-            Sign up
-          </Link>
-        </p>
-      </div>
     </div>
   );
 }

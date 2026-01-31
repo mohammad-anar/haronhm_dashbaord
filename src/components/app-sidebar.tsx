@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
   IconBell,
   IconBrandProducthunt,
@@ -8,40 +7,31 @@ import {
   IconCategory,
   IconChartBar,
   IconDashboard,
-  IconDashboardFilled,
-  IconDatabase,
   IconFileAi,
   IconFileDescription,
-  IconFileWord,
   IconFolder,
   IconHelp,
-  IconInnerShadowTop,
   IconList,
   IconListDetails,
   IconMenuOrder,
-  IconReport,
   IconSearch,
   IconSettings,
   IconUsers,
   IconUsersGroup,
 } from "@tabler/icons-react";
+import * as React from "react";
 
+import logo from "@/assets/logo2.png";
 import { NavDocuments } from "@/components/nav-documents";
-import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
-import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import Link from "next/link";
 import Image from "next/image";
-import logo from "@/assets/logo.png";
+import Link from "next/link";
 
 export const data = {
   user: {
@@ -193,7 +183,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             {/* <SidebarMenuButton asChild className=" flex items-center border"> */}
             <div className="flex items-center px-8 pb-2">
-              <Link href="/" className="block w-20 h-20">
+              <Link href="/" className="block w-28 h-28">
                 <Image
                   src={logo}
                   className="w-full h-full"

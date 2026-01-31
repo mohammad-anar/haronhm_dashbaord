@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { IconUser } from "@tabler/icons-react";
 import Link from "next/link";
-import React from "react";
 
 const NotificationPage = () => {
   return (

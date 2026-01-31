@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import productImage from "@/assets/product.png";
 import { MyModal } from "@/components/shared/Modal/MyModal";
 import { ProductsPagination } from "@/components/shared/Pagination/MyPatination";
 import { OrdersTable } from "@/components/tables/OrderTable";
 import { Clock, User } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import productImage from "@/assets/product.png";
 
 const OrderManagement = () => {
   const [currentPage, setCurrentPage] = useState(1);

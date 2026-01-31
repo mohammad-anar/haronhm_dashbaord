@@ -1,17 +1,14 @@
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { IconBell } from "@tabler/icons-react";
-import { NavUser } from "./nav-user";
 import { User } from "lucide-react";
 import Link from "next/link";
+import { NavUser } from "./nav-user";
 
 export function SiteHeader() {
   const data = {
