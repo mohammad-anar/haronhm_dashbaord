@@ -3,7 +3,6 @@
 
 import { AddBannerForm } from "@/components/shared/forms/AddBannerForm";
 import { EditBannerForm } from "@/components/shared/forms/EditBannerForm";
-import { EditAnimalForm } from "@/components/shared/forms/EditProductForm";
 import { MyModal } from "@/components/shared/Modal/MyModal";
 import { ProductsPagination } from "@/components/shared/Pagination/MyPatination";
 import { BannerTable } from "@/components/tables/BannerTable";
