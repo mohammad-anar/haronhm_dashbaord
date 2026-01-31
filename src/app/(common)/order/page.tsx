@@ -59,7 +59,7 @@ const OrderManagement = () => {
 
             {/* Product */}
             <div className="flex gap-6">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <Image
                   src={productImage}
                   alt="Premium Sheep Merino"
@@ -95,7 +95,7 @@ const OrderManagement = () => {
                   User Name :
                 </span>
                 <span className="text-my-green font-semibold text-lg">
-                  Jhon Doe
+                  John Doe
                 </span>
               </div>
 
