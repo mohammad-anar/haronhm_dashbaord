@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 interface ModalProps {
   open: boolean;
@@ -33,7 +34,7 @@ export function MyModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={showCloseButton}
-        className={contentClassName}
+        className={cn(contentClassName)}
       >
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
