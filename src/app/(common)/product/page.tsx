@@ -35,7 +35,7 @@ const ProductManagement = () => {
       console.log("Update Animal:", data);
       setIsModalOpen(false);
     } catch (error) {
-      console.error("Error Updationg animal:", error);
+      console.error("Error Updating animal:", error);
     } finally {
       setLoading(false);
     }
