@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import {
+  IconBell,
   IconBrandProducthunt,
   IconCamera,
   IconCategory,
@@ -175,6 +176,11 @@ export const data = {
       name: "Settings",
       url: "/settings",
       icon: IconSettings,
+    },
+    {
+      name: "Notifications",
+      url: "/notifications",
+      icon: IconBell,
     },
   ],
 };
