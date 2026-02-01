@@ -25,6 +25,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       router.replace("/");
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setChecking(false);
   }, [pathname, router]);
 
