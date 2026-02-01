@@ -2,7 +2,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { IconBell } from "@tabler/icons-react";
@@ -15,7 +15,8 @@ export function SiteHeader() {
     user: {
       name: "shadcn",
       email: "m@example.com",
-      avatar: "https://i.ibb.co.com/ynWCGpFB/marbapp.png",
+      avatar:
+        "https://i.ibb.co.com/VWkMFBWM/pngtree-user-icon-png-image-1796659.jpg",
     },
   };
   return (
