@@ -1,7 +1,10 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { SiteHeader } from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { store } from "@/redux/store";
+import { Provider } from "react-redux";
 import { ReactNode } from "react";
+import { SocketProvider } from "@/providers/SocketProvider";
 const CommonLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
@@ -17,7 +20,9 @@ const CommonLayout = ({ children }: { children: ReactNode }) => {
         <AppSidebar variant="inset" />
         <SidebarInset>
           <SiteHeader />
-          {children}
+          
+            {" "}
+            <SocketProvider>{children}</SocketProvider>
         </SidebarInset>
       </SidebarProvider>
     </>

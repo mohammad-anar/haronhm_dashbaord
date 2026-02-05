@@ -1,3 +1,5 @@
+"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,12 +7,49 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { IconBell } from "@tabler/icons-react";
+import { getSocket } from "@/lib/socket";
+import { IconBell, IconMenuOrder } from "@tabler/icons-react";
 import { User } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { NavUser } from "./nav-user";
+import axios from "axios";
+import Notification from "./shared/Notification";
 
 export function SiteHeader() {
+  const [notifications, setNotifications] = useState<any>([]);
+
+  console.log(notifications);
+  useEffect(() => {
+    const socket = getSocket();
+
+    const handler = (order: any) => {
+      setNotifications((prev: any) => [order, ...prev]);
+    };
+
+    socket.on("new-order", handler);
+
+    return () => {
+      socket.off("new-order", handler);
+    };
+  }, [notifications]);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const response = await axios.get(
+          "http://10.10.7.111:5000/api/v1/notification",
+        );
+
+        setNotifications(response?.data?.data?.data);
+      } catch (error) {
+        console.error("Error fetching notifications:", error);
+      }
+    }
+
+    getData();
+  }, []);
+
   const data = {
     user: {
       name: "shadcn",
@@ -37,7 +76,13 @@ export function SiteHeader() {
               >
                 <div className="relative ">
                   <div className="w-5 h-5 rounded-full bg-red-500 absolute -right-4 mr-4 flex items-center justify-center">
-                    <span className="text-[10px] text-white">5</span>
+                    <span className="text-[10px] text-white">
+                      {(notifications as any[]).reduce(
+                        (acc, notification) =>
+                          acc + (notification.isRead === true ? 0 : 1),
+                        0,
+                      )}
+                    </span>
                   </div>
                   <IconBell size={35} className="h-full" />
                 </div>
@@ -48,46 +93,11 @@ export function SiteHeader() {
                 <h4 className="font-bold text-lg">Notification</h4>
               </div>
               <DropdownMenuSeparator />
-              <div className="px-2 max-h-[200px] overflow-y-auto">
-                <div className="flex items-center  gap-3 bg-my-primary/10 hover:bg-gray-100 duration-300 rounded-md px-3 p-2 cursor-pointer">
-                  <User />
-                  <div>
-                    <h4 className="text-sm  font-bold">New order</h4>
-                    <p className="text-sm">2 min ago</p>
-                  </div>
-                </div>
-                {/*  */}
-                <div className="flex items-center  gap-3 hover:bg-gray-100 duration-300 rounded-md px-3 p-2 cursor-pointer">
-                  <User />
-                  <div>
-                    <h4 className="text-sm  font-bold">New order</h4>
-                    <p className="text-sm">2 min ago</p>
-                  </div>
-                </div>
-                {/*  */}
-                <div className="flex items-center  gap-3 hover:bg-gray-100 duration-300 rounded-md px-3 p-2 cursor-pointer">
-                  <User />
-                  <div>
-                    <h4 className="text-sm  font-bold">New order</h4>
-                    <p className="text-sm">2 min ago</p>
-                  </div>
-                </div>
-                {/*  */}
-                <div className="flex items-center  gap-3 hover:bg-gray-100 duration-300 rounded-md px-3 p-2 cursor-pointer">
-                  <User />
-                  <div>
-                    <h4 className="text-sm  font-bold">New order</h4>
-                    <p className="text-sm">2 min ago</p>
-                  </div>
-                </div>
-                {/*  */}
-                <div className="flex items-center  gap-3 hover:bg-gray-100 duration-300 rounded-md px-3 p-2 cursor-pointer">
-                  <User />
-                  <div>
-                    <h4 className="text-sm  font-bold">New order</h4>
-                    <p className="text-sm">2 min ago</p>
-                  </div>
-                </div>
+              <div className="px-2 max-h-[200px] overflow-y-auto space-y-4">
+                {notifications &&
+                  notifications.map((notification: any, index: number) => (
+                    <Notification key={index} data={notification} />
+                  ))}
               </div>
               <div className="flex items-center justify-end p-2 pr-5">
                 <Link
