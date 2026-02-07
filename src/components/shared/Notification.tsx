@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IconMenuOrder } from "@tabler/icons-react";
 import React from "react";
 
