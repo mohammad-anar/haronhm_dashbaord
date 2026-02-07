@@ -7,6 +7,7 @@ const Notification = ({ data }: { data: any }) => {
       <IconMenuOrder />
       <div>
         <h4 className="text-sm  font-bold">{data.message}</h4>
+        {/* date */}
         <p className="text-sm">{new Date(data.createdAt).toLocaleString()}</p>
       </div>
     </div>
